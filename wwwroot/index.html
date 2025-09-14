@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiosque Beach - Cardápio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-umbrella-beach"></i>
+                <h1>Quiosque Beach</h1>
+            </div>
+            <div class="cart-icon" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Formulário de Mesa -->
+            <div class="mesa-form" id="mesaForm">
+                <h2>Informe sua mesa</h2>
+                <div class="form-group">
+                    <label for="numeroMesa">Número da Mesa:</label>
+                    <input type="text" id="numeroMesa" placeholder="Ex: 10" required>
+                </div>
+                <div class="form-group">
+                    <label for="nomeCliente">Nome (opcional):</label>
+                    <input type="text" id="nomeCliente" placeholder="Seu nome">
+                </div>
+                <button onclick="confirmarMesa()" class="btn-primary">Continuar</button>
+            </div>
+
+            <!-- Cardápio -->
+            <div class="cardapio" id="cardapio" style="display: none;">
+                <!-- Filtros -->
+                <div class="filtros">
+                    <button class="filtro-btn active" onclick="filtrarProdutos('todos')">Todos</button>
+                    <button class="filtro-btn" onclick="filtrarProdutos('Bebida')">
+                        <i class="fas fa-glass-cheers"></i> Bebidas
+                    </button>
+                    <button class="filtro-btn" onclick="filtrarProdutos('Comida')">
+                        <i class="fas fa-hamburger"></i> Petiscos
+                    </button>
+                </div>
+
+                <!-- Lista de Produtos -->
+                <div class="produtos-grid" id="produtosGrid">
+                    <!-- Produtos serão carregados via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Carrinho Lateral -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Seu Pedido</h3>
+            <button onclick="toggleCart()" class="cart-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Itens do carrinho serão adicionados aqui -->
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: R$ <span id="cartTotal">0,00</span></strong>
+            </div>
+            <button onclick="finalizarPedido()" class="btn-success btn-full">
+                Finalizar Pedido
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de Status do Pedido -->
+    <div class="modal" id="statusModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Status do Pedido</h3>
+                <span class="modal-close" onclick="fecharModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="pedido-info">
+                    <p><strong>Pedido #<span id="pedidoNumero">-</span></strong></p>
+                    <p>Mesa: <span id="pedidoMesa">-</span></p>
+                    <p>Status: <span id="pedidoStatus" class="status-badge">-</span></p>
+                </div>
+                <div class="status-timeline">
+                    <div class="timeline-item" id="timeline-pendente">
+                        <div class="timeline-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Pedido Recebido</h4>
+                            <p>Aguardando confirmação</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" id="timeline-confirmado">
+                        <div class="timeline-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Pedido Confirmado</h4>
+                            <p>Sendo preparado</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" id="timeline-preparo">
+                        <div class="timeline-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Em Preparo</h4>
+                            <p>Sua ordem está sendo preparada</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" id="timeline-pronto">
+                        <div class="timeline-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Pedido Pronto</h4>
+                            <p>Aguardando entrega</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

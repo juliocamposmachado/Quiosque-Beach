@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: quiosque-beach-api
+    env: dotnet
+    buildCommand: dotnet publish --configuration Release --output ./build
+    startCommand: dotnet ./build/QuiosqueBeach.dll
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://0.0.0.0:$PORT
+      - key: DATABASE_URL
+        fromDatabase:
+          name: quiosque-db
+          property: connectionString
+    healthCheckPath: /api/health
+
+databases:
+  - name: quiosque-db
+    databaseName: quiosquebeach
+    user: quiosque
+    plan: free
