@@ -260,6 +260,25 @@ ENTRYPOINT ["dotnet", "QuiosqueBeach.dll"]
 
 Este projeto está licenciado sob a MIT License - veja o arquivo LICENSE para detalhes.
 
+## 🚀 Deploy em Produção (Render + Vercel)
+
+### Configuração de Variáveis de Ambiente:
+
+#### Backend (Render):
+- DATABASE_URL: Connection string PostgreSQL
+- GOOGLE_CLIENT_ID: Client ID do Google OAuth
+- GOOGLE_CLIENT_SECRET: Client Secret do Google OAuth  
+- JwtKey: Chave secreta JWT
+- ASPNETCORE_ENVIRONMENT: Production
+
+#### Frontend (Vercel):
+- NEXT_PUBLIC_API_URL: URL da API backend
+
+### URLs de Produção:
+- Frontend: https://quiosque-beach.vercel.app
+- Backend: https://quiosque-beach-api.onrender.com
+- OAuth Callback: /signin-google
+
 ## 📞 Suporte
 
 Para suporte técnico ou dúvidas:

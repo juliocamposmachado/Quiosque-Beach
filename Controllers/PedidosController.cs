@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using QuiosqueBeach.Data;
 using QuiosqueBeach.Models;
+using QuiosqueBeach.Hubs;
 
 namespace QuiosqueBeach.Controllers
 {
@@ -208,9 +209,4 @@ namespace QuiosqueBeach.Controllers
         }
     }
 
-    // Hub para SignalR
-    public class PedidoHub : Hub
-    {
-        // Métodos do hub podem ser adicionados aqui se necessário
-    }
 }

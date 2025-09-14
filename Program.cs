@@ -5,6 +5,7 @@ using System.Text;
 using QuiosqueBeach.Data;
 using QuiosqueBeach.Services;
 using QuiosqueBeach.Controllers;
+using QuiosqueBeach.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,8 +50,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     })
     .AddGoogle(options =>
     {
-        options.ClientId = builder.Configuration["Authentication:Google:ClientId"] ?? "";
-        options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"] ?? "";
+        options.ClientId = builder.Configuration["Authentication:Google:ClientId"] 
+            ?? Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID") ?? "";
+        options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"] 
+            ?? Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET") ?? "";
         options.CallbackPath = "/signin-google";
         options.SaveTokens = true;
     });
@@ -67,7 +70,14 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins(frontendUrl, "http://localhost:3000", "http://localhost:5000")
+        policy.WithOrigins(
+                frontendUrl, 
+                "http://localhost:3000", 
+                "http://localhost:5000",
+                "https://localhost:5001",
+                "https://quiosque-beach.vercel.app",
+                "https://quiosque-beach-api.onrender.com"
+              )
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
