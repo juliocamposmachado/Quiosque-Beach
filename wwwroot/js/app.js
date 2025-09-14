@@ -6,7 +6,7 @@ let pedidoAtual = null;
 let connection = null;
 
 // URLs da API
-const API_BASE = '/api';
+const API_BASE = window.location.hostname === 'localhost' ? '/api' : 'https://quiosque-beach-api.onrender.com/api';
 
 // Inicializar aplicação
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,8 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // SignalR
 function inicializarSignalR() {
+    const signalRUrl = window.location.hostname === 'localhost' ? 
+        '/pedidoHub' : 
+        'https://quiosque-beach-api.onrender.com/pedidoHub';
+    
     connection = new signalR.HubConnectionBuilder()
-        .withUrl("/pedidoHub")
+        .withUrl(signalRUrl)
         .build();
 
     connection.start().then(function () {
