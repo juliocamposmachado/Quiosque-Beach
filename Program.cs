@@ -123,4 +123,8 @@ Console.WriteLine("📱 Cliente: http://localhost:5000");
 Console.WriteLine("⚙️ Admin: http://localhost:5000/admin");
 Console.WriteLine("👤 Login: admin@quiosquebeach.com / admin123");
 
+// Configurar URL para produção (Render)
+var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
+app.Urls.Add($"http://0.0.0.0:{port}");
+
 app.Run();
