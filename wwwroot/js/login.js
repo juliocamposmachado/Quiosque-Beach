@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const token = localStorage.getItem('token');
     if (token) {
         // Redirecionar para a página principal se já estiver logado
-        window.location.href = '/';
+        window.location.href = '/cardapio.html';
         return;
     }
 
@@ -38,7 +38,7 @@ function verificarRetornoGoogle() {
             
             // Redirecionar para a página principal após 2 segundos
             setTimeout(() => {
-                window.location.href = '/';
+                window.location.href = '/cardapio.html';
             }, 2000);
             
         } catch (error) {
@@ -85,7 +85,7 @@ async function handleLogin(event) {
             
             // Redirecionar para a página principal
             setTimeout(() => {
-                window.location.href = '/';
+                window.location.href = '/cardapio.html';
             }, 1500);
             
         } else {
@@ -154,7 +154,7 @@ async function handleRegistro(event) {
             // Fechar modal e redirecionar
             fecharRegistro();
             setTimeout(() => {
-                window.location.href = '/';
+                window.location.href = '/cardapio.html';
             }, 1500);
             
         } else {

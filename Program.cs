@@ -115,8 +115,9 @@ app.MapControllers();
 // Configurar SignalR Hub
 app.MapHub<PedidoHub>("/pedidoHub");
 
-// Rota padrão para servir o frontend
-app.MapFallbackToFile("index.html");
+// Configurar roteamento específico para arquivos estáticos
+// O index.html será servido como página inicial com verificação de auth
+// Não usar MapFallbackToFile para evitar interferir com as rotas da API
 
 Console.WriteLine("🚀 Quiosque Beach iniciado!");
 Console.WriteLine("📱 Cliente: http://localhost:5000");
