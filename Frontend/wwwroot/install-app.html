@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalar App - Quiosque Beach</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/install-app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="install-body">
+    <div class="install-container">
+        <!-- Header com informações do usuário -->
+        <header class="install-header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-umbrella-beach"></i>
+                    <h1>Quiosque Beach</h1>
+                </div>
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img id="userAvatar" src="" alt="Avatar" style="display: none;">
+                        <i class="fas fa-user" id="defaultAvatar"></i>
+                    </div>
+                    <div class="user-details">
+                        <span class="user-name" id="userName">Usuário</span>
+                        <span class="user-email" id="userEmail">email@exemplo.com</span>
+                    </div>
+                    <button class="btn-logout" onclick="Auth.logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Conteúdo principal -->
+        <main class="install-main">
+            <div class="install-card">
+                <div class="install-hero">
+                    <div class="app-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h2>Instalar Aplicativo</h2>
+                    <p class="hero-description">
+                        Baixe nosso aplicativo para fazer pedidos mais facilmente e receber notificações em tempo real sobre seus pedidos!
+                    </p>
+                </div>
+
+                <div class="install-features">
+                    <h3><i class="fas fa-star"></i> Vantagens do App</h3>
+                    <ul class="features-list">
+                        <li>
+                            <i class="fas fa-bell"></i>
+                            <div>
+                                <strong>Notificações em Tempo Real</strong>
+                                <span>Receba avisos quando seu pedido estiver pronto</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-zap"></i>
+                            <div>
+                                <strong>Pedidos Mais Rápidos</strong>
+                                <span>Interface otimizada para dispositivos móveis</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <strong>Favoritos e Histórico</strong>
+                                <span>Acesso rápido aos seus pedidos anteriores</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-wifi-slash"></i>
+                            <div>
+                                <strong>Funciona Offline</strong>
+                                <span>Visualize o cardápio mesmo sem internet</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="install-options">
+                    <!-- Detectar dispositivo e mostrar opções apropriadas -->
+                    
+                    <!-- Para dispositivos Android -->
+                    <div id="androidInstall" class="install-option" style="display: none;">
+                        <div class="option-header">
+                            <i class="fab fa-android"></i>
+                            <h4>Android</h4>
+                        </div>
+                        <div class="option-content">
+                            <p>Baixe o APK diretamente ou instale via navegador</p>
+                            <div class="install-buttons">
+                                <button class="btn-install btn-primary" onclick="downloadApk()">
+                                    <i class="fas fa-download"></i>
+                                    Baixar APK
+                                </button>
+                                <button class="btn-install btn-secondary" onclick="installPWA()">
+                                    <i class="fas fa-plus-square"></i>
+                                    Instalar do Navegador
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Para dispositivos iOS -->
+                    <div id="iosInstall" class="install-option" style="display: none;">
+                        <div class="option-header">
+                            <i class="fab fa-apple"></i>
+                            <h4>iPhone/iPad</h4>
+                        </div>
+                        <div class="option-content">
+                            <p>Adicione à tela inicial para uma experiência nativa</p>
+                            <div class="ios-instructions">
+                                <ol>
+                                    <li>
+                                        <i class="fas fa-share"></i>
+                                        Toque no botão <strong>Compartilhar</strong> no Safari
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-plus-square"></i>
+                                        Selecione <strong>"Adicionar à Tela Inicial"</strong>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check"></i>
+                                        Toque em <strong>"Adicionar"</strong> para confirmar
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Para desktop -->
+                    <div id="desktopInstall" class="install-option" style="display: none;">
+                        <div class="option-header">
+                            <i class="fas fa-desktop"></i>
+                            <h4>Desktop</h4>
+                        </div>
+                        <div class="option-content">
+                            <p>Instale como aplicativo do navegador para acesso rápido</p>
+                            <div class="install-buttons">
+                                <button class="btn-install btn-primary" onclick="installPWA()">
+                                    <i class="fas fa-download"></i>
+                                    Instalar Aplicativo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="install-actions">
+                    <div class="action-buttons">
+                        <a href="cardapio.html" class="btn-secondary">
+                            <i class="fas fa-utensils"></i>
+                            Ir para Cardápio
+                        </a>
+                        <button class="btn-primary" onclick="continuarSemInstalar()">
+                            <i class="fas fa-arrow-right"></i>
+                            Continuar sem Instalar
+                        </button>
+                    </div>
+                    
+                    <div class="skip-info">
+                        <small>
+                            <i class="fas fa-info-circle"></i>
+                            Você pode instalar o aplicativo mais tarde quando quiser
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Modal de instruções detalhadas -->
+        <div id="instructionsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Instruções de Instalação</h3>
+                    <span class="modal-close" onclick="closeInstructions()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div id="androidInstructions" class="instructions-content">
+                        <h4>Instalação no Android</h4>
+                        <ol>
+                            <li>Baixe o arquivo APK clicando no botão "Baixar APK"</li>
+                            <li>Nas configurações do seu dispositivo, habilite "Fontes desconhecidas"</li>
+                            <li>Localize o arquivo baixado e toque para instalar</li>
+                            <li>Siga as instruções na tela</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+    <script src="js/install-app.js"></script>
+</body>
+</html>

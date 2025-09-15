@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Quiosque Beach</string>
+    <string name="title_activity_main">Quiosque Beach</string>
+    <string name="package_name">com.quiosquebeach.app</string>
+    <string name="custom_url_scheme">com.quiosquebeach.app</string>
+</resources>

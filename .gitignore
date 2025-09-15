@@ -417,3 +417,33 @@ $RECYCLE.BIN/
 # Credentials files (KEEP SECRET)
 client_secret_*.json
 appsettings.Production.json
+
+# Mobile/Android specific
+Mobile/android/app/build/
+Mobile/android/build/
+Mobile/android/.gradle/
+Mobile/android/local.properties
+Mobile/android/gradle.properties
+Mobile/node_modules/
+Mobile/dist/
+Mobile/platforms/
+Mobile/plugins/
+
+# Backend specific
+Backend/bin/
+Backend/obj/
+Backend/logs/
+Backend/appsettings.Development.json
+
+# Frontend specific  
+Frontend/wwwroot/downloads/*.apk
+Frontend/node_modules/
+Frontend/dist/
+
+# Documentation temporária
+*.md.backup
+temp/
+
+# APK files (except placeholder)
+*.apk
+!Frontend/wwwroot/downloads/README.md
