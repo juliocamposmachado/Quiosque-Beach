@@ -1,0 +1,33 @@
+{
+  "name": "quiosque-beach-mobile",
+  "version": "1.0.0",
+  "description": "Quiosque Beach Mobile App",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'Build completed - using wwwroot as web assets'",
+    "capacitor:serve": "cap run android",
+    "capacitor:build": "cap build android",
+    "capacitor:sync": "cap sync",
+    "android:build": "cap build android",
+    "android:run": "cap run android"
+  },
+  "keywords": [
+    "quiosque",
+    "beach",
+    "restaurant",
+    "mobile"
+  ],
+  "author": "Quiosque Beach",
+  "license": "MIT",
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  },
+  "dependencies": {
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/splash-screen": "^6.0.2",
+    "@capacitor/status-bar": "^6.0.1",
+    "@capacitor/app": "^6.0.1",
+    "@capacitor/keyboard": "^6.0.2"
+  }
+}

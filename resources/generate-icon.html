@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Quiosque Beach Icon</title>
+    <style>
+        .icon-container {
+            width: 512px;
+            height: 512px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 90px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .icon {
+            color: white;
+            font-size: 200px;
+            font-family: 'Font Awesome 5 Free', Arial, sans-serif;
+            font-weight: 900;
+        }
+        
+        .waves {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 40px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 20px;
+        }
+        
+        .waves::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            width: 240px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body style="margin: 0; padding: 50px; background: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+    <div class="icon-container">
+        <div class="icon">🏖️</div>
+        <div class="waves"></div>
+    </div>
+</body>
+</html>
